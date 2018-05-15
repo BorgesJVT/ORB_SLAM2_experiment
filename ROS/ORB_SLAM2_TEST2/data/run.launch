@@ -1,0 +1,17 @@
+<launch>
+
+<node pkg="ORB_SLAM2_TEST2" type="Mono" name="ORB_SLAM2" />
+
+<node pkg="tf2_ros" type="static_transform_publisher" name="startup_link" args="0 0 0 0 0 0 1 map base_camera" />
+
+<node name="modelvisualisation" pkg="rviz" type="rviz" output="screen" args="-d /home/borgesjvt/.rviz/ORB_SLAM2.rviz" />
+
+<node pkg="control_everaldo" type="everaldo_keyboard_teleop" name="teleop_keyboard" />
+
+<include file="$(find video_stream_opencv)/launch/camera.launch" />
+
+</launch>
+
+<!--rosrun tf static_transform_publisher 0 0 0 0 0 0 1 World CameraMarker 10-->
+<!-- source ~/catkin_ws/devel/setup.bash -->
+<!-- export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/home/borgesjvt/ORB_SLAM2_TEST2/Examples/ROS -->
